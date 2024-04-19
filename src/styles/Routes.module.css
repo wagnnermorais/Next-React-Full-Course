@@ -7,3 +7,14 @@
   background: #151515;
   color: #fff;
 }
+
+.buttonBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.buttonBox button {
+  padding: 0.25rem 1rem;
+  cursor: pointer;
+}
