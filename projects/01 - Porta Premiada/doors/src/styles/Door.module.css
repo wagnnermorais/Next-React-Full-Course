@@ -1,0 +1,13 @@
+.door {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 310px;
+  background: #d2691e;
+}
+
+.doorNumber {
+  font-size: 3rem;
+}
