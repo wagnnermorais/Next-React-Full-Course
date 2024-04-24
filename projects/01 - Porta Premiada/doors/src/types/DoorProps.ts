@@ -1,5 +1,6 @@
 import DoorModel from "../model/DoorModel"
 
 export interface DoorProps {
-  door: DoorModel
+  value: DoorModel
+  onChange: (newDoor: DoorModel) => void
 }
