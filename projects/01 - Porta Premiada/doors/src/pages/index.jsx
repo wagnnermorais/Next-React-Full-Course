@@ -1,6 +1,6 @@
 import Head from "next/head";
-import Gift from "@/components/Gift";
-import Door from "@/components/Door";
+import Gift from "../components/Gift";
+import Door from "../components/Door";
 
 export default function Home() {
   return (
