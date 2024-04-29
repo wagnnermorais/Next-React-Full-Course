@@ -10,6 +10,7 @@
 .structure {
   display: flex;
   flex-grow: 1;
+  background: #0005;
   border: 5px solid #a52a2a;
   border-bottom: 0;
   width: 90%;
