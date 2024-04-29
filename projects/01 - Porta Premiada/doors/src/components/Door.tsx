@@ -8,17 +8,26 @@ export default function Door(props: DoorProps) {
     props.onChange(door.changeSelected());
   };
 
+  const openDoor = (e) => {
+    e.stopPropagation();
+    props.onChange(door.openDoor());
+  };
+
   return (
     <div className={styles.container} onClick={handleChangeSelectedDoor}>
       <div
         className={`${styles.structure} ${
-          door.isSelected ? styles.doorSelected : ""
+          door.isSelected && !door.isOpened ? styles.doorSelected : ""
         }`}
       >
-        <div className={styles.door}>
-          <div className={styles.doorNumber}>{door.doorNumber}</div>
-          <div className={styles.doorHandle}></div>
-        </div>
+        {door.isOpened ? (
+          false
+        ) : (
+          <div className={styles.door}>
+            <div className={styles.doorNumber}>{door.doorNumber}</div>
+            <div className={styles.doorHandle} onClick={openDoor}></div>
+          </div>
+        )}
       </div>
       <div className={styles.floor}></div>
     </div>
