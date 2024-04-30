@@ -1,13 +1,21 @@
-import { useState } from "react";
-import { useChangeHighlight } from "../hooks/useChangeHighlight";
-import { useCreateDoors } from "../hooks/useCreateDoors";
+import { useEffect, useState } from "react";
+import { useChangeHighlight } from "../../../hooks/useChangeHighlight";
+import { useCreateDoors } from "../../../hooks/useCreateDoors";
+import { useRouter } from "next/router";
 import Head from "next/head";
-import Door from "../components/Door";
+import Door from "../../../components/Door";
 import Link from "next/link";
-import styles from "../styles/Game.module.css";
+import styles from "../../../styles/Game.module.css";
 
 export default function Game() {
-  const [doors, setDoors] = useState(useCreateDoors(6, 2));
+  const router = useRouter();
+  const [doors, setDoors] = useState([]);
+
+  useEffect(() => {
+    const doors = +router.query.doors;
+    const giftedDoor = +router.query.hasGift;
+    setDoors(useCreateDoors(doors, giftedDoor));
+  }, [router?.query]);
 
   return (
     <>
