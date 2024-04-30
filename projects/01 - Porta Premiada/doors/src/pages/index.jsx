@@ -1,15 +1,6 @@
-import { useState } from "react";
 import Head from "next/head";
-import Gift from "../components/Gift";
-import Door from "../components/Door";
-import DoorModel from "../model/DoorModel";
-import { useCreateDoors } from "../hooks/useCreateDoors";
-import { useChangeHighlight } from "../hooks/useChangeHighlight";
-import styles from "../styles/Home.module.css";
 
 export default function Home() {
-  const [doors, setDoors] = useState(useCreateDoors(3, 2));
-
   return (
     <>
       <Head>
@@ -18,16 +9,8 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.doorContainer}>
-        {doors.map((door) => (
-          <Door
-            key={door.doorNumber}
-            value={door}
-            onChange={(newDoor) => {
-              setDoors(useChangeHighlight(doors, newDoor));
-            }}
-          />
-        ))}
+      <div>
+        <h1>Index</h1>
       </div>
     </>
   );
