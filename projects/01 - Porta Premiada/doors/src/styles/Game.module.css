@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.doorContainer {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.buttonBox {
+  margin: 2rem 0;
+}
+
+.buttonBox button {
+  padding: 0.8rem 3rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 2px;
+  background: #333234;
+  color: #fff;
+  transition: 0.25s;
+  cursor: pointer;
+}
+
+.buttonBox button:hover {
+  background: #1c1a1e;
+}
