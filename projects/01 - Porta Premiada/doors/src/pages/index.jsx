@@ -1,4 +1,6 @@
 import Head from "next/head";
+import Card from "../components/Card";
+import styles from "../styles/Home.module.css";
 
 export default function Home() {
   return (
@@ -9,8 +11,15 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <h1>Index</h1>
+      <div className={styles.container}>
+        <h1>Lucky Door</h1>
+        <div className={styles.cardBox}>
+          <Card />
+          <Card />
+        </div>
+        <div className={styles.buttonBox}>
+          <button>Iniciar</button>
+        </div>
       </div>
     </>
   );
