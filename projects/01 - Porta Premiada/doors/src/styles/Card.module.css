@@ -1,0 +1,8 @@
+.cardContainer {
+  display: flex;
+  width: 200px;
+  height: 200px;
+  color: #fff;
+  margin: 0.25rem;
+  padding: 1rem;
+}
