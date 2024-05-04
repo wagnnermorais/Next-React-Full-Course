@@ -1,3 +1,6 @@
+import { ReactElement } from "react";
+
 export interface CardProps {
-  background?: string
+  background?: string;
+  children: ReactElement
 }

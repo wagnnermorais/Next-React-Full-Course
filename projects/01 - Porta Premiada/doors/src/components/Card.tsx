@@ -7,7 +7,7 @@ export default function Card(props: CardProps) {
       className={styles.cardContainer}
       style={{ backgroundColor: props.background ?? "#fff" }}
     >
-      <h2>Card</h2>
+      {props.children}
     </div>
   );
 }
