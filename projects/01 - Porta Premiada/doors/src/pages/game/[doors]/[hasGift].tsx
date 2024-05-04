@@ -5,11 +5,21 @@ import { useRouter } from "next/router";
 import Head from "next/head";
 import Door from "../../../components/Door";
 import Link from "next/link";
+import DoorModel from "../../../model/DoorModel";
 import styles from "../../../styles/Game.module.css";
 
 export default function Game() {
   const router = useRouter();
-  const [doors, setDoors] = useState([]);
+  const [doors, setDoors] = useState<DoorModel[]>([]);
+  const [isValidGame, setIsValidGame] = useState<boolean>(false);
+
+  useEffect(() => {
+    const doors = +router.query.doors;
+    const giftedDoor = +router.query.hasGift;
+    const validDoors = doors >= 3 && doors <= 10;
+    const validGiftedDoor = giftedDoor >= 1 && giftedDoor <= doors;
+    setIsValidGame(validDoors && validGiftedDoor);
+  }, [doors]);
 
   useEffect(() => {
     const doors = +router.query.doors;
@@ -27,15 +37,17 @@ export default function Game() {
       </Head>
       <div className={styles.container}>
         <div className={styles.doorContainer}>
-          {doors.map((door) => (
-            <Door
-              key={door.doorNumber}
-              value={door}
-              onChange={(newDoor) => {
-                setDoors(useChangeHighlight(doors, newDoor));
-              }}
-            />
-          ))}
+          {isValidGame
+            ? doors.map((door) => (
+                <Door
+                  key={door.doorNumber}
+                  value={door}
+                  onChange={(newDoor) => {
+                    setDoors(useChangeHighlight(doors, newDoor));
+                  }}
+                />
+              ))
+            : "Invalid Game"}
         </div>
         <div className={styles.buttonBox}>
           <Link href={"/"}>
