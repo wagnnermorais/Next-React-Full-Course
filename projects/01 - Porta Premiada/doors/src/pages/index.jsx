@@ -1,8 +1,13 @@
+import { useState } from "react";
 import Head from "next/head";
 import Card from "../components/Card";
+import NumberInput from "../components/NumberInput";
 import styles from "../styles/Home.module.css";
 
 export default function Home() {
+  const [doorQuantity, setDoorQuantity] = useState(3);
+  const [hasGift, setHasGift] = useState(1);
+
   return (
     <>
       <Head>
@@ -14,8 +19,20 @@ export default function Home() {
       <div className={styles.container}>
         <h1>Lucky Door</h1>
         <div className={styles.cardBox}>
-          <Card />
-          <Card />
+          <Card>
+            <NumberInput
+              text={"How many doors?"}
+              value={doorQuantity}
+              onChange={(newQuantity) => setDoorQuantity(newQuantity)}
+            />
+          </Card>
+          <Card>
+            <NumberInput
+              text={"Gifed Door"}
+              value={hasGift}
+              onChange={(newGiftedDoor) => setHasGift(newGiftedDoor)}
+            />
+          </Card>
         </div>
         <div className={styles.buttonBox}>
           <button>Iniciar</button>
