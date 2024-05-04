@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import Card from "../components/Card";
 import NumberInput from "../components/NumberInput";
@@ -35,7 +36,9 @@ export default function Home() {
           </Card>
         </div>
         <div className={styles.buttonBox}>
-          <button>Iniciar</button>
+          <Link href={`/game/${doorQuantity}/${hasGift}`}>
+            <button>Iniciar</button>
+          </Link>
         </div>
       </div>
     </>
