@@ -1,0 +1,39 @@
+.numberInputContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  color: #000000;
+  font-weight: 700;
+  font-weight: 700;
+}
+
+.text {
+  font-size: 1.3125rem;
+}
+
+.value {
+  font-size: 6rem;
+}
+
+.numberInputButtonBox {
+  display: flex;
+  gap: 1rem;
+}
+
+.button {
+  padding: 0.25rem 1rem;
+  font-size: 1.125rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  background: #000000;
+  color: #fff;
+  transition: 0.35s ease;
+  cursor: pointer;
+}
+
+.button:hover {
+  opacity: 0.8;
+}
