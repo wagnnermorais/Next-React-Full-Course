@@ -1,22 +1,26 @@
+function randomNumber(min = 1, max = 1000) {
+  return parseInt(Math.random() * (max - min)) + min;
+}
+
 export default function handler(req, res) {
   res.status(200).json([
     {
-      id: 1,
+      id: randomNumber(),
       name: "Pen",
       price: 2.61,
     },
     {
-      id: 2,
+      id: randomNumber(),
       name: "Book",
       price: 20,
     },
     {
-      id: 3,
+      id: randomNumber(),
       name: "Erasor",
       price: 1.25,
     },
     {
-      id: 4,
+      id: randomNumber(),
       name: "Scissors",
       price: 8,
     },
