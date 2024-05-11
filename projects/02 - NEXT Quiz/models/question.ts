@@ -3,13 +3,13 @@ import useSorteQuestions from "../src/hooks/useSortQuestions"
 
 export default class QuestionModel {
   #id: number
-  #question: string
+  #statement: string
   #answers: AnswerModel[]
   #isRight: boolean
 
-  constructor(id: number, question: string, answers: AnswerModel[], isRight = false) {
+  constructor(id: number, statement: string, answers: AnswerModel[], isRight = false) {
     this.#id = id
-    this.#question = question
+    this.#statement = statement
     this.#answers = answers
     this.#isRight = isRight
   }
@@ -18,8 +18,8 @@ export default class QuestionModel {
     return this.#id
   }
 
-  get question() {
-    return this.#question
+  get statement() {
+    return this.#statement
   }
 
   get answer() {
@@ -39,7 +39,7 @@ export default class QuestionModel {
 
   sortAnswers(): QuestionModel {
     let sortedAnswers = useSorteQuestions(this.#answers)
-    return new QuestionModel(this.#id, this.#question, sortedAnswers, this.#isRight)
+    return new QuestionModel(this.#id, this.#statement, sortedAnswers, this.#isRight)
   }
 
   selectedAnswer(index: number): QuestionModel {
@@ -49,13 +49,13 @@ export default class QuestionModel {
       const shouldReveal = selectedAnswer || answer.isRight
       return shouldReveal ? answer.reveal() : answer
     })
-    return new QuestionModel(this.#id, this.#question, answers, isRightAnswer)
+    return new QuestionModel(this.#id, this.#statement, answers, isRightAnswer)
   }
 
   toObject() {
     return {
       id: this.#id,
-      question: this.#question,
+      question: this.#statement,
       answers: this.#answers.map(answer => answer.toObject()),
       isRight: this.#isRight,
     }
