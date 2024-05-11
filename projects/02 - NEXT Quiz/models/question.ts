@@ -42,6 +42,16 @@ export default class QuestionModel {
     return new QuestionModel(this.#id, this.#question, sortedAnswers, this.#isRight)
   }
 
+  selectedAnswer(index: number): QuestionModel {
+    const isRightAnswer = this.#answers[index]?.isRight
+    const answers = this.#answers.map((answer, i) => {
+      const selectedAnswer = index === i
+      const shouldReveal = selectedAnswer || answer.isRight
+      return shouldReveal ? answer.reveal() : answer
+    })
+    return new QuestionModel(this.#id, this.#question, answers, isRightAnswer)
+  }
+
   toObject() {
     return {
       id: this.#id,
