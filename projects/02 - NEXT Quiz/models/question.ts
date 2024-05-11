@@ -1,4 +1,5 @@
 import AnswerModel from "./answer"
+import useSorteQuestions from "../src/hooks/useSortQuestions"
 
 export default class QuestionModel {
   #id: number
@@ -34,6 +35,11 @@ export default class QuestionModel {
       if (answer.revealed) return true
     }
     return false
+  }
+
+  sortAnswers(): QuestionModel {
+    let sortedAnswers = useSorteQuestions(this.#answers)
+    return new QuestionModel(this.#id, this.#question, sortedAnswers, this.#isRight)
   }
 
   toObject() {
