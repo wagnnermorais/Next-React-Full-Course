@@ -5,4 +5,5 @@ export default interface AnswerProps {
   index: number;
   letter: string;
   letterBackground: string;
+  onResponse: (index: number) => void;
 }
