@@ -1,4 +1,4 @@
-export default function useSorteQuestions(elements: any[]): any[] {
+export default function useSortQuestions(elements: any[]): any[] {
   return elements
     .map((value) => ({ value, random: Math.random() }))
     .sort((obj1, obj2) => obj1.random - obj2.random)
