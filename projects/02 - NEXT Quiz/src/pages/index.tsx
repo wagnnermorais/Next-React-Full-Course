@@ -1,16 +1,24 @@
+import { useState } from "react";
 import Head from "next/head";
 import Question from "../components/Question";
 import styles from "../styles/Home.module.css";
 import QuestionModel from "../../models/question";
 import AnswerModel from "../../models/answer";
 
+const mockQuestion = new QuestionModel(1, "Melhor cor?", [
+  AnswerModel.wrongAnswer("Green"),
+  AnswerModel.wrongAnswer("Red"),
+  AnswerModel.wrongAnswer("Blue"),
+  AnswerModel.rightAnswer("Black"),
+]);
+
 export default function Home() {
-  const testQuestion = new QuestionModel(1, "Melhor cor?", [
-    AnswerModel.wrongAnswer("Green"),
-    AnswerModel.wrongAnswer("Red"),
-    AnswerModel.wrongAnswer("Blue"),
-    AnswerModel.rightAnswer("Black"),
-  ]);
+  const [question, setQuestion] = useState(mockQuestion);
+
+  const onResponse = (index: number) => {
+    setQuestion(question.selectedAnswer(index));
+  };
+
   return (
     <div className={styles.homeContainer}>
       <Head>
@@ -19,7 +27,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Question value={testQuestion} />
+      <Question value={question} onResponse={onResponse} />
     </div>
   );
 }
