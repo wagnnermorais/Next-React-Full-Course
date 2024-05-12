@@ -16,6 +16,7 @@ export default function Question(props: QuestionProps) {
           index={index}
           letter={letters[index].value}
           letterBackground={letters[index].background}
+          onResponse={props.onResponse}
         />
       ))}
     </div>
