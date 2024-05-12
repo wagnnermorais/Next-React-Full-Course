@@ -1,0 +1,47 @@
+.answerContainer {
+  display: flex;
+  min-width: 500px;
+  width: 80%;
+  height: 100px;
+  margin: 0.85rem 0;
+  background-color: dodgerblue;
+}
+
+.answerContent {
+  display: flex;
+  flex: 1;
+  position: relative;
+}
+
+.letter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 1rem 0 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+  height: 2.725rem;
+  width: 2.725rem;
+  border-radius: 25px;
+}
+
+.value {
+  font-size: 1.3rem;
+  font-size: 700;
+}
+
+.front,
+.back {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.front {
+  align-items: center;
+  background: #fff;
+  color: #000;
+  border-radius: 12px;
+  padding: 1rem;
+}
