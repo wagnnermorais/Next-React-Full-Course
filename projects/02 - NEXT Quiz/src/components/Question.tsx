@@ -8,7 +8,12 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.questionContainer}>
       {question.answer.map((answer, index) => (
-        <Answer value={answer} index={index} letter="A" letterColor="#F2C866" />
+        <Answer
+          value={answer}
+          index={index}
+          letter="A"
+          letterBackground="#F2C866"
+        />
       ))}
       <Statement text={question.statement} />
     </div>
