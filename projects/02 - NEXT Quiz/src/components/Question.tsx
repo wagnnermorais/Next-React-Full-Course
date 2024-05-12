@@ -1,5 +1,6 @@
 import { QuestionProps } from "../types/QuestionProps";
 import Answer from "./Answer";
+import Countdown from "./Countdown";
 import Statement from "./Statement";
 import letters from "../pages/api/db/colors";
 import styles from "../styles/Question.module.css";
@@ -9,6 +10,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.questionContainer}>
       <Statement text={question.statement} />
+      <Countdown duration={10} timeout={props.timeout} />
       {question.answer.map((answer, index) => (
         <Answer
           key={index}
