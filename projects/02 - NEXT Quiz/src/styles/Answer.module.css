@@ -4,7 +4,6 @@
   width: 80%;
   height: 100px;
   margin: 0.85rem 0;
-  background-color: dodgerblue;
 }
 
 .answerContent {
@@ -18,16 +17,17 @@
   align-items: center;
   justify-content: center;
   margin: 0 1rem 0 0;
+  width: 2.725rem;
+  height: 2.725rem;
   font-size: 1.3rem;
   font-weight: 700;
-  height: 2.725rem;
-  width: 2.725rem;
+  color: #fff;
   border-radius: 25px;
 }
 
 .value {
   font-size: 1.3rem;
-  font-size: 700;
+  font-weight: 700;
 }
 
 .front,
