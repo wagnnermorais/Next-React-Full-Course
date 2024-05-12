@@ -9,6 +9,7 @@ export default function Question(props: QuestionProps) {
     <div className={styles.questionContainer}>
       {question.answer.map((answer, index) => (
         <Answer
+          key={index}
           value={answer}
           index={index}
           letter="A"
