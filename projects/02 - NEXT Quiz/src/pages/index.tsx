@@ -19,6 +19,10 @@ export default function Home() {
     setQuestion(question.selectedAnswer(index));
   };
 
+  const timeout = () => {
+    if (!question.isQuestionAnswered)
+      return setQuestion(question.selectedAnswer(-1));
+  };
   return (
     <div className={styles.homeContainer}>
       <Head>
@@ -27,7 +31,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Question value={question} onResponse={onResponse} />
+      <Question value={question} onResponse={onResponse} timeout={timeout} />
     </div>
   );
 }
