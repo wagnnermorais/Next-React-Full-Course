@@ -45,3 +45,25 @@
   border-radius: 12px;
   padding: 1rem;
 }
+
+.back > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+  border-radius: 12px;
+}
+
+.rightAnswer {
+  background: #2baa6d;
+}
+
+.wrongAnswer {
+  background: #e44a4c;
+}
+
+.rightAnswer .value,
+.wrongAnswer .value {
+  font-size: 1.5rem;
+}
