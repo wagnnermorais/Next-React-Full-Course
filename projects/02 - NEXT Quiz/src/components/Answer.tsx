@@ -7,7 +7,12 @@ export default function Answer(props: AnswerProps) {
     <div className={styles.answerContainer}>
       <div className={styles.answerContent}>
         <div className={styles.front}>
-          <div className={styles.letter}>{props.letter}</div>
+          <div
+            className={styles.letter}
+            style={{ background: props.letterBackground }}
+          >
+            {props.letter}
+          </div>
           <div className={styles.value}>{answer.value}</div>
         </div>
         <div className={styles.back}></div>
