@@ -10,7 +10,7 @@ export default function Question(props: QuestionProps) {
   return (
     <div className={styles.questionContainer}>
       <Statement text={question.statement} />
-      <Countdown duration={10} timeout={props.timeout} />
+      <Countdown duration={props.timeForAnswer ?? 10} timeout={props.timeout} />
       {question.answer.map((answer, index) => (
         <Answer
           key={index}
