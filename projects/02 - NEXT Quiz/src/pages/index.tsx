@@ -1,10 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Head from "next/head";
 import Question from "../components/Question";
 import Button from "../components/Button";
+import Form from "../components/Form";
 import QuestionModel from "../../models/question";
 import AnswerModel from "../../models/answer";
 import styles from "../styles/Home.module.css";
+
+const BASE_URL = "http://localhost:3000/api";
 
 const mockQuestion = new QuestionModel(1, "Melhor cor?", [
   AnswerModel.wrongAnswer("Green"),
@@ -14,7 +17,30 @@ const mockQuestion = new QuestionModel(1, "Melhor cor?", [
 ]);
 
 export default function Home() {
-  const [question, setQuestion] = useState(mockQuestion);
+  const [question, setQuestion] = useState<QuestionModel>(mockQuestion);
+  const [questionIds, setQuestionIds] = useState<number[]>([]);
+  const [rightAnswers, setRightAnswers] = useState<number>(0);
+
+  async function useLoadQuestionIds() {
+    const response = await fetch(`${BASE_URL}/quiz`);
+    const questionIds = await response.json();
+    setQuestionIds(questionIds);
+  }
+
+  async function useLoadQuestion(questionId: number) {
+    const response = await fetch(`${BASE_URL}/questions/${questionId}`);
+    const question = await response.json();
+    const newQuestion = QuestionModel.createUsingObject(question);
+    setQuestion(newQuestion);
+  }
+
+  useEffect(() => {
+    useLoadQuestionIds();
+  }, []);
+
+  useEffect(() => {
+    questionIds.length > 0 && useLoadQuestion(questionIds[0]);
+  }, []);
 
   const onResponse = (index: number) => {
     setQuestion(question.selectedAnswer(index));
@@ -24,6 +50,15 @@ export default function Home() {
     if (!question.isQuestionAnswered)
       return setQuestion(question.selectedAnswer(-1));
   };
+
+  const answeredQuestion = (answeredQuestion: QuestionModel) => {
+    const isRightAnswer = answeredQuestion.isRight;
+    setQuestion(answeredQuestion);
+    setRightAnswers(rightAnswers + (isRightAnswer ? 1 : 0));
+  };
+
+  const nextStep = () => {};
+
   return (
     <div className={styles.homeContainer}>
       <Head>
@@ -32,13 +67,12 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Question
-        timeForAnswer={5}
-        value={question}
-        onResponse={onResponse}
-        timeout={timeout}
+      <Form
+        question={question}
+        isLastQuestion={true}
+        answeredQuestion={answeredQuestion}
+        nextStep={nextStep}
       />
-      <Button text="Next question" href="/result" />
     </div>
   );
 }
