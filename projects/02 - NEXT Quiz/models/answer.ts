@@ -29,6 +29,10 @@ export default class AnswerModel {
     return new AnswerModel(value, false)
   }
 
+  static createUsingObject(obj: AnswerModel): AnswerModel {
+    return new AnswerModel(obj.value, obj.isRight, obj.revealed)
+  }
+
   reveal() {
     return new AnswerModel(this.#value, this.#isRight, true)
   }

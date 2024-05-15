@@ -22,7 +22,7 @@ export default class QuestionModel {
     return this.#statement
   }
 
-  get answer() {
+  get answers() {
     return this.#answers
   }
 
@@ -59,5 +59,10 @@ export default class QuestionModel {
       answers: this.#answers.map(answer => answer.toObject()),
       isRight: this.#isRight,
     }
+  }
+
+  static createUsingObject(obj: QuestionModel): QuestionModel {
+    const answers = obj.answers.map(answer => AnswerModel.createUsingObject(answer));
+    return new QuestionModel(obj.id, obj.statement, answers, obj.isRight);
   }
 }
