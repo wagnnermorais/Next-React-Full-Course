@@ -20,7 +20,7 @@ const questions: QuestionModel[] = [
     AnswerModel.wrongAnswer("Rebanho"),
     AnswerModel.rightAnswer("Matilha"),
   ]),
-  new QuestionModel(4, "Qual fruto é conhecido no Norte e Nordeste como 'jerimum'?", [
+  new QuestionModel(4, "Qual o triângulo que possue todos os ângulos diferentes?", [
     AnswerModel.wrongAnswer("Equilátero"),
     AnswerModel.wrongAnswer("Isóceles"),
     AnswerModel.wrongAnswer("Trapézio"),
