@@ -1,23 +1,17 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import Head from "next/head";
 import Question from "../components/Question";
 import Button from "../components/Button";
 import Form from "../components/Form";
 import QuestionModel from "../../models/question";
-import AnswerModel from "../../models/answer";
 import styles from "../styles/Home.module.css";
 
 const BASE_URL = "http://localhost:3000/api";
 
-const mockQuestion = new QuestionModel(1, "Melhor cor?", [
-  AnswerModel.wrongAnswer("Green"),
-  AnswerModel.wrongAnswer("Red"),
-  AnswerModel.wrongAnswer("Blue"),
-  AnswerModel.rightAnswer("Black"),
-]);
-
 export default function Home() {
-  const [question, setQuestion] = useState<QuestionModel>(mockQuestion);
+  const router = useRouter();
+  const [question, setQuestion] = useState<QuestionModel>();
   const [questionIds, setQuestionIds] = useState<number[]>([]);
   const [rightAnswers, setRightAnswers] = useState<number>(0);
 
@@ -57,7 +51,31 @@ export default function Home() {
     setRightAnswers(rightAnswers + (isRightAnswer ? 1 : 0));
   };
 
-  const nextStep = () => {};
+  const nextQuestionId = () => {
+    if (question) {
+      const nextIndex = questionIds.indexOf(question.id) + 1;
+      return questionIds[nextIndex];
+    }
+  };
+
+  const nextStep = () => {
+    const nextId = nextQuestionId();
+    nextId ? goToNextQuestion(nextId) : finishQuiz();
+  };
+
+  const goToNextQuestion = (nextId: number) => {
+    useLoadQuestion(nextId);
+  };
+
+  const finishQuiz = () => {
+    router.push({
+      pathname: "/result",
+      query: {
+        total: questionIds.length,
+        right: rightAnswers,
+      },
+    });
+  };
 
   return (
     <div className={styles.homeContainer}>
@@ -69,7 +87,7 @@ export default function Home() {
       </Head>
       <Form
         question={question}
-        isLastQuestion={true}
+        isLastQuestion={nextQuestionId() === undefined}
         answeredQuestion={answeredQuestion}
         nextStep={nextStep}
       />
