@@ -1,3 +1,4 @@
+import Layout from "@/components/template/Layout";
 import Head from "next/head";
 
 export default function Home() {
@@ -9,6 +10,9 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
         <title>Admin Template</title>
       </Head>
+      <Layout title="Home" subtitle="Working on a admin template">
+        <h2>Content</h2>
+      </Layout>
     </div>
   );
 }
