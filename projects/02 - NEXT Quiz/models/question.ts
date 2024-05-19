@@ -55,7 +55,7 @@ export default class QuestionModel {
   toObject() {
     return {
       id: this.#id,
-      question: this.#statement,
+      statement: this.#statement,
       answers: this.#answers.map(answer => answer.toObject()),
       isRight: this.#isRight,
     }
