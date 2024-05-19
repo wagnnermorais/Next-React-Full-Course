@@ -29,12 +29,20 @@ export default function Home() {
   }
 
   useEffect(() => {
-    useLoadQuestionIds();
+    async function fetchQuestionIds() {
+      const response = await fetch(`${BASE_URL}/quiz`);
+      const questionIds = await response.json();
+      setQuestionIds(questionIds);
+    }
+
+    fetchQuestionIds();
   }, []);
 
   useEffect(() => {
-    questionIds.length > 0 && useLoadQuestion(questionIds[0]);
-  }, []);
+    if (questionIds.length > 0) {
+      useLoadQuestion(questionIds[0]);
+    }
+  }, [questionIds]);
 
   const onResponse = (index: number) => {
     setQuestion(question.selectedAnswer(index));
