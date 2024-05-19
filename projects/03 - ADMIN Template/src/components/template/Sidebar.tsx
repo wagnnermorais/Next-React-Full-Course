@@ -1,7 +1,14 @@
+import { BellIcon, HomeIcon, SettingsIcon } from "../icons";
+import MenuItem from "./MenuItem";
+
 export default function Sidebar() {
   return (
     <aside>
-      <h1>Menu</h1>
+      <ul>
+        <MenuItem url="/" text="Home" icon={HomeIcon} />
+        <MenuItem url="/settings" text="Settings" icon={SettingsIcon} />
+        <MenuItem url="/notifications" text="Notifications" icon={BellIcon} />
+      </ul>
     </aside>
   );
 }
