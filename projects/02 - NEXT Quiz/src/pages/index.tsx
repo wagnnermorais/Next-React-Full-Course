@@ -41,7 +41,7 @@ export default function Home() {
   };
 
   const timeout = () => {
-    if (!question.isQuestionAnswered)
+    if (question.isQuestionAnswered)
       return setQuestion(question.selectedAnswer(-1));
   };
 
@@ -52,10 +52,8 @@ export default function Home() {
   };
 
   const nextQuestionId = () => {
-    if (question) {
-      const nextIndex = questionIds.indexOf(question.id) + 1;
-      return questionIds[nextIndex];
-    }
+    const nextIndex = questionIds.indexOf(question.id) + 1;
+    return questionIds[nextIndex];
   };
 
   const nextStep = () => {
@@ -85,12 +83,16 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Form
-        question={question}
-        isLastQuestion={nextQuestionId() === undefined}
-        answeredQuestion={answeredQuestion}
-        nextStep={nextStep}
-      />
+      {question ? (
+        <Form
+          question={question}
+          isLastQuestion={nextQuestionId() === undefined}
+          answeredQuestion={answeredQuestion}
+          nextStep={nextStep}
+        />
+      ) : (
+        false
+      )}
     </div>
   );
 }
