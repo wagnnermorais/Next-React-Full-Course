@@ -7,7 +7,7 @@ export default function Layout(props: LayoutProps) {
   return (
     <div className="flex w-full min-h-screen dark">
       <Sidebar />
-      <div className="flex flex-col w-full p-4 bg-zinc-300 dark:bg-zinc-900 dark:text-white">
+      <div className="flex flex-col w-full p-4 bg-zinc-300">
         <Header title={props.title} subtitle={props.subtitle} />
         <Content>{props.children}</Content>
       </div>
