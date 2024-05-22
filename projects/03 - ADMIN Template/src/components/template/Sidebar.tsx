@@ -14,7 +14,15 @@ export default function Sidebar() {
         <MenuItem url="/notifications" text="Notifications" icon={BellIcon} />
       </ul>
       <ul className="py-4 px-2">
-        <MenuItem url="/" text="Logout" icon={LogoutIcon} />
+        <MenuItem
+          text="Logout"
+          icon={LogoutIcon}
+          className={`
+          text-red-600
+          hover:bg-red-400
+          hover:text-white
+        `}
+        />
       </ul>
     </aside>
   );
