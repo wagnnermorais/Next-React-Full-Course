@@ -2,5 +2,6 @@ export interface MenuItemProps {
   url?: string;
   text: string;
   icon?: any;
-  onClick?: (e: React.MouseEvent<HTMLButtonElement>) => {}
+  className?: string;
+  onClick?: (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => void;
 }
