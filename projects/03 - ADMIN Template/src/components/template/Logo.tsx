@@ -3,7 +3,7 @@ export default function Logo() {
     <img
       src="/logo.png"
       alt="Project logo"
-      className="w-full h-full cursor-pointer"
+      className="w-[65%] h-full cursor-pointer"
     />
   );
 }
