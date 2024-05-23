@@ -5,7 +5,7 @@ export default function MenuItem(props: MenuItemProps) {
   return (
     <div>
       <li
-        className="hover:bg-gray-200 dark:hover:bg-zinc-800 ease-in-out duration-200"
+        className="hover:bg-gray-200 dark:hover:bg-zinc-800 px-6 ease-in-out duration-200"
         onClick={props.onClick}
       >
         {props.url ? (
