@@ -6,23 +6,54 @@ export default function Auth() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const handleSubmit = () => {
+    if (mode === "login") {
+      return console.log("Login");
+    }
+
+    return console.log("register");
+  };
+
   return (
-    <div>
-      <h1>Autenticação</h1>
-      <AuthInput
-        type="email"
-        label="E-mail"
-        value={email}
-        valueChanged={setEmail}
-        required
-      />
-      <AuthInput
-        type="password"
-        label="Password"
-        value={password}
-        valueChanged={setPassword}
-        required
-      />
+    <div className="flex flex-col items-center justify-center min-h-screen bg-zinc-900">
+      <h1 className="my-4 text-xl font-bold text-white">
+        {mode === "login"
+          ? "Sign in with your account!"
+          : "Sign up to our platform"}
+      </h1>
+      <div className="bg-white my-4 mx-auto pb-4 px-4 w-1/2">
+        <div className="my-8">
+          <AuthInput
+            type="email"
+            label="E-mail"
+            value={email}
+            valueChanged={setEmail}
+            required
+          />
+        </div>
+        <div className="my-4">
+          <AuthInput
+            type="password"
+            label="Password"
+            value={password}
+            valueChanged={setPassword}
+            required
+          />
+        </div>
+      </div>
+      <button
+        className="my-4 py-2 px-4 w-1/2 font-bold border border-gray-400 rounded-sm text-white ease duration-300 hover:opacity-80"
+        onClick={handleSubmit}
+      >
+        {mode === "login" ? "Sign in" : "Register"}
+      </button>
+      <hr className="my-2 border-gray-300 w-1/2" />
+      <button
+        className="my-4 py-2 px-4 w-1/2 font-bold  bg-red-500 border border-gray-400 rounded-sm text-white relative ease duration-300 hover:opacity-80"
+        onClick={handleSubmit}
+      >
+        {mode === "login" ? "Sign in with Google" : "Register"}
+      </button>
     </div>
   );
 }
