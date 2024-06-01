@@ -23,13 +23,13 @@ export default function Auth() {
           className="h-screen w-full object-cover"
         />
       </div>
-      <div className="w-full md:w-1/2 lg:w-2/3">
-        <h1 className="my-4 text-xl font-bold text-white">
+      <div className="flex flex-col items-center justify-center w-full min-h-screen md:w-1/2 lg:w-2/3">
+        <h1 className="my-4 text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white">
           {mode === "login"
             ? "Sign in with your account!"
             : "Sign up to our platform"}
         </h1>
-        <div className="bg-white my-4 mx-auto pb-4 px-4 w-1/2">
+        <div className="my-4 mx-auto py-12 px-6 w-[70%] bg-white rounded-sm">
           <div className="my-8">
             <AuthInput
               type="email"
@@ -50,14 +50,14 @@ export default function Auth() {
           </div>
         </div>
         <button
-          className="my-4 py-2 px-4 w-1/2 font-bold border border-gray-400 rounded-sm text-white ease duration-300 hover:opacity-80"
+          className="my-4 py-3.5 px-4 w-[70%] font-bold border border-gray-400 rounded-sm text-white ease duration-300 hover:opacity-80"
           onClick={handleSubmit}
         >
           {mode === "login" ? "Sign in" : "Register"}
         </button>
-        <hr className="my-2 border-gray-300 w-1/2" />
+        <hr className="my-2 border-gray-300 w-[70%]" />
         <button
-          className="my-4 py-2 px-4 w-1/2 font-bold  bg-red-500 border border-gray-400 rounded-sm text-white relative ease duration-300 hover:opacity-80"
+          className="my-4 py-3.5 px-4 w-[70%] font-bold bg-red-500 border border-gray-400 rounded-sm text-white relative ease duration-300 hover:opacity-80"
           onClick={handleSubmit}
         >
           {mode === "login" ? "Sign in with Google" : "Register"}
