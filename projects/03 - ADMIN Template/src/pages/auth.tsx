@@ -18,7 +18,7 @@ export default function Auth() {
     <div className="flex items-center min-h-screen bg-zinc-900">
       <div className="w-1/2 hidden md:block md:w-1/2 lg:w-2/3">
         <img
-          src="https://images.unsplash.com/photo-1612585763928-e64fdc2a3d38?q=80&w=1035&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          src="https://images.unsplash.com/photo-1716034348515-5f647879c04b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           alt="Auth image"
           className="h-screen w-full object-cover"
         />
