@@ -29,7 +29,7 @@ export default function Auth() {
             ? "Sign in with your account!"
             : "Sign up to our platform"}
         </h1>
-        <div className="my-4 mx-auto py-12 px-6 w-[70%] bg-white rounded-sm">
+        <div className="my-4 mx-auto py-12 px-6 w-[75%]  rounded-sm">
           <div className="my-8">
             <AuthInput
               type="email"
@@ -60,7 +60,7 @@ export default function Auth() {
           className="my-4 py-3.5 px-4 w-[70%] font-bold bg-red-500 border border-gray-400 rounded-sm text-white relative ease duration-300 hover:opacity-80"
           onClick={handleSubmit}
         >
-          {mode === "login" ? "Sign in with Google" : "Register"}
+          {mode === "login" ? "Sign in with Google" : "Sign up with Google"}
         </button>
       </div>
     </div>
