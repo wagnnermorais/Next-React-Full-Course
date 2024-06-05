@@ -1,17 +1,28 @@
 import { useState } from "react";
+import { WarningIcon } from "@/components/icons";
+import useAuth from "@/hooks/useAuth";
 import AuthInput from "@/components/auth/AuthInput";
 
 export default function Auth() {
+  const { user, handleGoogleLogin } = useAuth();
   const [mode, setMode] = useState<"login" | "register">("login");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState(null);
 
   const handleSubmit = () => {
     if (mode === "login") {
-      return console.log("Login");
+      return handleShowError("An error occurred during sign-in.", 2);
     }
 
-    return console.log("register");
+    return handleShowError("An error occurred during sign-up.", 2);
+  };
+
+  const handleShowError = (message: any, timer: number) => {
+    setError(message);
+    setTimeout(() => {
+      setError(null);
+    }, timer * 1000);
   };
 
   return (
@@ -29,7 +40,15 @@ export default function Auth() {
             ? "Sign in with your account!"
             : "Sign up to our platform"}
         </h1>
-        <div className="my-4 mx-auto py-12 px-6 w-[75%]  rounded-sm">
+        {error ? (
+          <div className="flex items-center gap-2 text-red-500">
+            {WarningIcon}
+            <span>{error}</span>
+          </div>
+        ) : (
+          false
+        )}
+        <div className="my-4 mx-auto md:py-12 px-6 w-[75%]  rounded-sm">
           <div className="my-8">
             <AuthInput
               type="email"
@@ -58,10 +77,31 @@ export default function Auth() {
         <hr className="my-2 border-gray-300 w-[70%]" />
         <button
           className="my-4 py-3.5 px-4 w-[70%] font-bold bg-red-500 border border-gray-400 rounded-sm text-white relative ease duration-300 hover:opacity-80"
-          onClick={handleSubmit}
+          onClick={handleGoogleLogin}
         >
-          {mode === "login" ? "Sign in with Google" : "Sign up with Google"}
+          Sign in with Google
         </button>
+        {mode === "login" ? (
+          <p className="my-4 font-bold text-white">
+            New around here?{" "}
+            <a
+              className="text-red-500 cursor-pointer"
+              onClick={() => setMode("register")}
+            >
+              Sign in for free.
+            </a>
+          </p>
+        ) : (
+          <p className="my-4 font-bold text-white">
+            Already a member?{" "}
+            <a
+              className="text-red-500 cursor-pointer"
+              onClick={() => setMode("login")}
+            >
+              Sign up with your credentials.
+            </a>
+          </p>
+        )}
       </div>
     </div>
   );
