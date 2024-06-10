@@ -6,24 +6,31 @@ import User from "@/models/User";
 
 const AuthContext = createContext<AuthContextProps>({});
 
-// async function normalizedUser(firebaseUser: firebase.User): Promise<User> {
-//   const token = await firebaseUser.getIdToken();
-//   return {
-//     uid: firebaseUser.uid,
-//     name: firebaseUser.displayName,
-//     emai: firebaseUser.email,
-//     token: token,
-//     provider: firebaseUser.providerData[0]?.providerId,
-//     image: firebaseUser.photoURL,
-//   };
-// }
+async function normalizedUser(firebaseUser: firebase.User): Promise<User> {
+  const token = await firebaseUser.getIdToken();
+  return {
+    uid: firebaseUser.uid,
+    name: firebaseUser.displayName,
+    emai: firebaseUser.email,
+    token: token,
+    provider: firebaseUser.providerData[0]?.providerId,
+    image: firebaseUser.photoURL,
+  };
+}
 
 export function AuthProvider(props: any) {
   const [user, setUser] = useState<User>();
 
   async function handleGoogleLogin() {
-    console.log("Google login");
-    route.push("/");
+    const response = await firebase
+      .auth()
+      .signInWithPopup(new firebase.auth.GoogleAuthProvider());
+
+    if (response.user?.email) {
+      const user = await normalizedUser(response.user);
+      setUser(user);
+      route.push("/");
+    }
   }
   return (
     <AuthContext.Provider
