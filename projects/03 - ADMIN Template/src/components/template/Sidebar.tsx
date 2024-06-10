@@ -1,4 +1,10 @@
-import { BellIcon, HomeIcon, LogoutIcon, SettingsIcon } from "../icons";
+import {
+  BellIcon,
+  HomeIcon,
+  LogoutIcon,
+  ProfileIcon,
+  SettingsIcon,
+} from "../icons";
 import Logo from "./Logo";
 import MenuItem from "./MenuItem";
 
@@ -12,6 +18,7 @@ export default function Sidebar() {
         <MenuItem url="/" text="Home" icon={HomeIcon} />
         <MenuItem url="/settings" text="Settings" icon={SettingsIcon} />
         <MenuItem url="/notifications" text="Notifications" icon={BellIcon} />
+        <MenuItem url="/profile" text="Profile" icon={ProfileIcon} />
       </ul>
       <ul className="py-4">
         <MenuItem
