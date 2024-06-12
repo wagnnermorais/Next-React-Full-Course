@@ -8,14 +8,7 @@ export default function Notifications() {
       <Layout
         title="Notifications management"
         subtitle="Manage your notifications here"
-      >
-        <button
-          className="py-2 px-4 border border-white"
-          onClick={handleToggleTheme}
-        >
-          Click
-        </button>
-      </Layout>
+      ></Layout>
     </div>
   );
 }
