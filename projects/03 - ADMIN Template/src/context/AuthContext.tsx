@@ -76,6 +76,8 @@ export function AuthProvider(props: any) {
     if (Cookies.get("admin-template-cod3r-auth")) {
       const cancel = firebase.auth().onIdTokenChanged(configureSession);
       return () => cancel();
+    } else {
+      setLoader(false);
     }
   }, []);
 
@@ -83,6 +85,7 @@ export function AuthProvider(props: any) {
     <AuthContext.Provider
       value={{
         user,
+        loader,
         handleGoogleLogin,
         handleLogout,
       }}
