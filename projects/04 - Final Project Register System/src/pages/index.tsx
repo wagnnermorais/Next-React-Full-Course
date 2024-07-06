@@ -1,4 +1,5 @@
 import { Poppins } from "next/font/google";
+import Layout from "../components/Layout";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -8,9 +9,11 @@ const poppins = Poppins({
 export default function Home() {
   return (
     <main
-      className={`flex min-h-screen flex-col items-center justify-center ${poppins.className} bg-zinc-950`}
+      className={`flex min-h-screen flex-col items-center justify-center ${poppins.className} bg-gradient-to-r from-blue-300 to-purple-300`}
     >
-      <h1 className="text-4xl font-bold text-white">Hello, world!</h1>
+      <Layout title="test">
+        <p>conteudo</p>
+      </Layout>
     </main>
   );
 }
