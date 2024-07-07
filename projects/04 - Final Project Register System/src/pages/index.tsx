@@ -12,6 +12,7 @@ const poppins = Poppins({
 });
 
 export default function Home() {
+  const [client, setClient] = useState<Client>(Client.empty);
   const [isVisible, setIsVisible] = useState<"table" | "form">("table");
   const clients = [
     new Client("Ana", 24, "1"),
@@ -21,7 +22,8 @@ export default function Home() {
   ];
 
   const selectedClient = (client: Client) => {
-    console.log(client.name);
+    setClient(client);
+    setIsVisible("form");
   };
   const deletedClient = (client: Client) => {
     console.log(client.name + " foi excluido");
@@ -29,6 +31,12 @@ export default function Home() {
 
   const saveClient = (client: Client) => {
     console.log(client);
+    setIsVisible("table");
+  };
+
+  const newClient = (client: Client) => {
+    setClient(Client.empty());
+    setIsVisible("form");
   };
 
   return (
@@ -39,7 +47,7 @@ export default function Home() {
         {isVisible === "table" ? (
           <>
             <div className="flex justify-end">
-              <Button onClick={() => setIsVisible("form")}>Novo cliente</Button>
+              <Button onClick={newClient}>Novo cliente</Button>
             </div>
             <Table
               clients={clients}
@@ -49,7 +57,7 @@ export default function Home() {
           </>
         ) : (
           <Form
-            client={clients[0]}
+            client={client}
             isCanceled={() => setIsVisible("table")}
             isClientChanged={saveClient}
           />
